@@ -23,8 +23,9 @@ async function getClient(req, res) {
 }
 
 async function createClient(req, res) {
+    const{nome, salario, endereco, cep, telefone, email} = req.body
     try {
-        const cliente = await Cliente.create(req.body);
+        const cliente = await Cliente.create({nome, salario, endereco, cep, telefone, email});
         res.json(cliente);
     } catch (err) {
         res.status(500).json({ error: err.message });
